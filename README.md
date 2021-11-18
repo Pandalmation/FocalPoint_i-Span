@@ -20,7 +20,7 @@ We are first year university students who have a hard time focusing and enjoys p
 
 - Users can track, view and compare their progress & results with others. The application can provide insights and solution based on recent progress. For instance, if performance have been going down as a trend or way below your average results (after a week of playing), the application will state so. The application will then give a generated piece of advice "perhaps you needed to drink a glass of water?" "have you been getting enough sleep?" which may help the user think twice to why he/her performance have decreased.
 
-- Provides a survey for users to complete, used to help identify specific concentration weaknesses to work on. This way, the application helps users to set up a goal and as a way, provides motivation for users to continue the use of the app. These concentration issues include: memory problems, multitasking issues or lacking energy to concentrate. Our application will then set missions/games according to users' needs, only if users choose to take the recommended pathway.
+- Provides a survey for users to complete, used to help identify specific concentration weaknesses to work on. This way, the application helps users to set up a goal and in a way, provides motivation for users to continue the use of the app. These concentration issues include: memory problems, multitasking issues or lacking energy to concentrate. Our application will then set missions/games according to users' needs, only if users choose to take the recommended pathway.
 
 # Target Users:
 - Users with ADHD
