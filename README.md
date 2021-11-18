@@ -1,7 +1,7 @@
 # Human Computer Interaction (COMP6800001) - Final Project
-Class: L1CC
-Team: Focal Point
-Members:
+- Class: L1CC
+- Team: Focal Point
+- Members:
 1. 2502059360 - Tiffany Widjaja
 2. 2502055596 - Nicholas Budiman
 
