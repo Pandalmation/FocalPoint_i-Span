@@ -1,3 +1,4 @@
+from distutils.ccompiler import show_compilers
 from time import time
 import tkinter as tk
 from tkinter import *
@@ -8,14 +9,14 @@ from PIL import ImageTk, Image
 
 screen = Tk()
 screen.geometry("600x900")
-screen.title('Colour game')
+screen.title('I-SPAN')
 
 #################
 screen.configure(bg='#262626')
 screen.resizable(0, 0)
 
 
-l1 = Label(screen, text='Your mom', fg='white', bg='#262626')
+l1 = Label(screen, text='I-SPAN', fg='white', bg='#262626')
 l1.config(font=('Comic Sans MS', 90))
 l1.pack(expand=True)
 
@@ -56,10 +57,10 @@ def mainmenu():
         myButton1.place(x=x, y=y)
 
     bttn(0, 80, 'G A M E', '#0f9d9a', '#12c4c0', Cardgame)
-    bttn(0, 117, 'A C H I E V E M E N T', '#0f9d9a', '#12c4c0', None)
-    bttn(0, 154, 'Q U E S T', '#0f9d9a', '#12c4c0', None)
-    bttn(0, 191, 'S T O R E ', '#0f9d9a', '#12c4c0', None)
-    bttn(0, 228, 'P R O G R E S S', '#0f9d9a', '#12c4c0', None)
+    bttn(0, 117, 'M I S S I O N', '#0f9d9a', '#12c4c0', missions)
+    bttn(0, 154, 'P R O G R E S S', '#0f9d9a', '#12c4c0', Progres)
+    bttn(0, 191, 'S T O R E ', '#0f9d9a', '#12c4c0', shop)
+    
 
     #
     def dele():
@@ -91,31 +92,69 @@ def missions():
 
     def newl1():
         L1 = Label(screen, text='Missions', fg='white', bg='#262626')
-        L1.place = (x= 260, y=300)
+        L1.config(font=('Arial', 48))
+        L1.place(x= 190, y=0)
 
-        L2 = Label(screen, text= 'Todays Missions= \nget some fresh air go take a picture now outside \nEat a meal with veggies', fg= 'white', bg='#262626')
-        L2.place = (x = 300, y= 250)
+        L2 = Label(screen, text= 'Todays Missions = \n                                          * Get some fresh air go take a picture now outside\n* Eat a meal with veggies', fg= 'white', bg='#262626')
+        L2.config(font=("Arial", 12))
+        L2.place(x = 0, y= 100)
 
         L3 = Label(screen, text= 'RELAX')
-        L3.place = (x = 300, y= 250)
+        L3.config(font=("Arial", 12))
+        L3.place(x = 130, y= 300)
 
         L4 = Label(screen, text= 'FITNESS')
-        L4.place = (x = 300, y= 250)
+        L4.config(font=("Arial", 12))
+        L4.place(x = 270, y= 300)
 
         L5 = Label(screen, text= 'STUDY')
-        L5.place = (x = 300, y= 250)
+        L5.config(font=("Arial", 12))
+        L5.place(x = 430, y= 300)
 
         L6 = Label(screen, text= 'DIET')
-        L6.place = (x = 300, y= 250)
+        L6.config(font=("Arial", 12))
+        L6.place(x = 130, y= 400)
 
         L7 = Label(screen, text= 'RANDOM')
-        L7.place = (x = 300, y= 250)
+        L7.config(font=("Arial", 12))
+        L7.place(x = 270, y= 400)
 
         L8 = Label(screen, text= 'ART')
-        L8.place = (x = 300, y= 250)
+        L8.config(font=("Arial", 12))
+        L8.place(x = 430, y= 400)
 
         L9 = Label(screen, text= 'Todays Focal Points earned = 10')
+        L9.config(font=("Arial", 12))
+        L9.place(x = 130, y = 500)
+    newl1()
+def shop():
+    def dele():
+        f1.destroy()
+    dele()
+    clearlogo()
+    def store():
+        L1 = Label(screen, text='Store', fg='white', bg='#262626')
+        L1.config(font=('Arial', 48))
+        L1.place(x=210, y=0)
 
+        L2 = Label(screen, text='Work in progress', fg='white', bg='#262626')
+        L2.config(font=('Arial', 48))
+        L2.place(x=70, y=280)
+    store()
+def Progres():
+    def dele():
+        f1.destroy()
+    dele()
+    clearlogo()
+    def workinprogress():
+        L1 = Label(screen, text='Progress', fg='white', bg='#262626')
+        L1.config(font=('Arial', 48))
+        L1.place(x=190, y=0)
+
+        L2 = Label(screen, text='Work in Progress', fg='white', bg='#262626')
+        L2.config(font=('Arial', 48))
+        L2.place(x=50, y=280)
+    workinprogress()
 def Cardgame():
     def dele():
         f1.destroy()
@@ -124,7 +163,7 @@ def Cardgame():
     def start(event):
         
         t2.config(text="")
-        if timeleft==30:
+        if timeleft==180:
             countdown()
         nextcolor()
         
