@@ -1,138 +1,135 @@
+from time import time
+import tkinter as tk
+from tkinter import *
 
-from curses import KEY_DOWN
-from email import message
-import pygame as py
-import sys
-
-from pygame.constants import QUIT
-from pygame.display import update
-from pygame.sprite import Sprite
-from os import path
-
-#initialize pygame
-py.init()
-
-#colors
-red = py.Color(255, 0, 0)
-green = py.Color(0, 255, 0)
-black = py.Color(0, 0, 0)
-white = py.Color(255, 255, 255)
-brown = py.Color(165, 42, 42)
-orange = py.Color(255, 165, 0)
-
-#Window
-Width = 1920
-Height = 1080
-screen = py.display.set_mode((Width, Height))
-py.display.set_caption("Ispan")
-clock = py.time.Clock()
-FPS = 60
+import random 
 
 
-class Firstgame():
-    def __init__(self):
-        self.lvl = 1
-        self.lvlfinished = False
+screen = Tk()
+screen.geometry("600x900")
+screen.title('Colour game')
+
+timeleft = 30
+def start(event):
+    t2.config(text="")
+    if timeleft==30:
+        countdown()
+    nextcolor()
+
+def nextcolor():
+    global s
+    global timeleft
+
+    if timeleft > 0:
+        i.focus_set()
+        if i.get().lower()==colours[1].lower():
+            s+=1
+        i.delete(0,END)
+        random.shuffle(colours)
+        text.config (fg=str(colours[1]), text= str(colours[0]))
+        score=Label (text="score : " + str(s),font=("Arial",15),fg="red")
+        score.place (x= 220,y=90)
+    if timeleft == 0:
+        tk.messagebox.showinfo("Game Over",f"Hey your time is up and your score is {s}")
+
+def countdown():
+    global timeleft
     
-    def update(self, eventlist):
-        self.draw()
+    if timeleft > 0:
+        timeleft -= 1 
+        tm=Label(screen, text='Time Left: ' + str(timeleft),font=("Arial",15),fg='red')
+        tm.place (x=220, y=120)
+        tm.after(1000,countdown)
+        
+    
+    
+        
+colours = ['Red','Blue','Orange','Green','Yellow','Pink','Purple','Brown','White']
+s=0
+t = Label(screen, text= "Please type the color of the text, not the word itself", font= ("Aria",17), fg ="red")
+t.place (x=50, y= 30)
 
-    def draw(self):
-        screen.fill(red)
-        #font for title and game
-        fontTitle = py.font.Font("Courier", 30)
-        fontGame = py.font.Font("Courier", 15)
-        #title text and rect
-        textTitle = fontTitle.render("Match",True,white)
-        rectTitle = fontTitle.get_rect(topmiddle = (Width//2,15))
-        #level text and rect
-        textLevel = fontGame.render("Level" + str(self.lvl), True, white)
-        rectLevel = textLevel.get_rect(topmiddle = (Width//2,50))
-        #info text and rect
-        textInfo = fontGame.render("Find a pair of the same image", True, white)
-        rectInfo = textInfo.get_rect(topmiddle = (Width//2,90))
-        #
-        if not self.lvl == 3:
-            textNextLevel = fontGame.render("You've passed the level! Press SPACE to proceed to the next one.", True, green)
-        else:
-            textNextLevel = fontGame.render("You've won the game! Press SPACE to play again", True, green)
-        rectNextLevel = textNextLevel.get_rect(botmiddle = (Width// 2, Height - 40))
+t2= Label(screen, text= "PRESS ENTER TO START", font= ('Aria',17), fg= "red")
+t2.place (x=180, y= 80)
 
-        screen.blit(textTitle, rectTitle)
-        screen.blit(textInfo, rectInfo)
-        screen.blit(textInfo, rectInfo)
-         
-        if self.lvlfinished:
-            screen.blit(textNextLevel, rectNextLevel)
+i= Entry(screen, font = ('Aria',17), fg= "black", width= 15)
+i.place (x=200, y= 400)
+
+text = Label(screen,font = ('Arial',100))
+text.place(x=150,y=190)
+
+screen.bind('<Return>', start)
+i.focus_set()
+
+#
+w.configure(bg='#262626')
+w.resizable(0,0)
+
+
+l1=Label(w,text='Python',fg='white',bg='#262626')
+l1.config(font=('Comic Sans MS',90))
+l1.pack(expand=True)
+
+
+def toggle_win():
+    f1=Frame(w,width=300,height=500,bg='#12c4c0')
+    f1.place(x=0,y=0)
+
+
+    #buttons
+    def bttn(x,y,text,bcolor,fcolor,cmd):
+     
+        def on_entera(e):
+            myButton1['background'] = bcolor #ffcc66
+            myButton1['foreground']= '#262626'  #000d33
+
+        def on_leavea(e):
+            myButton1['background'] = fcolor
+            myButton1['foreground']= '#262626'
+
+        myButton1 = Button(f1,text=text,
+                       width=42,
+                       height=2,
+                       fg='#262626',
+                       border=0,
+                       bg=fcolor,
+                       activeforeground='#262626',
+                       activebackground=bcolor,            
+                        command=cmd)
+                      
+        myButton1.bind("<Enter>", on_entera)
+        myButton1.bind("<Leave>", on_leavea)
+
+        myButton1.place(x=x,y=y)
+
+    bttn(0,80,'A C E R','#0f9d9a','#12c4c0',None)
+    bttn(0,117,'D E L L','#0f9d9a','#12c4c0',None)
+    bttn(0,154,'A P P L E','#0f9d9a','#12c4c0',None)
+    bttn(0,191,'A S U S','#0f9d9a','#12c4c0',None)
+    bttn(0,228,'A C E R','#0f9d9a','#12c4c0',None)
+    bttn(0,265,'A C E R','#0f9d9a','#12c4c0',None)
+
+    #
+    def dele():
+        f1.destroy()
+
+    global img2
+    img2 = ImageTk.PhotoImage(Image.open('salir.png'))
+
+    Button(f1,
+           image=img2,
+           border=0,
+           command=dele,
+           bg='#12c4c0',
+           activebackground='#12c4c0').place(x=5,y=10)
     
 
-class Menu():
-    def __init__(self, game):
-        self.game = game
-        self.mid_w, self.mid_h = Width/2, Height/2
-        self.run_display = True
-        self.cursor_rect = py.Rect(0,0,20,20)
-        self.offset = - 100
-        self.font_name = "Courier"
-    def draw_tex(self, text, size, x, y):
-        font = py.font.Font(self.font_name, size)
-        text_surface = font.render(text, True, black)
-        text_rect = text_surface.get_rect()
-        text_rect.center = (x,y)
-        screen.blit(text_surface, text_rect)
-    def draw_cursor(self):
-        self.draw_text( "*", 15, self.cursor_rect.x, self.cursor_rect.y)
-    def blit_screen(self):
-        self.game.window.blit(screen, (0,0))
-        py.display.update()
-        self.game.reset_keys()
-class Mainmenu(Menu):
-    def __init__(self, game):
-        Menu.__init__(self, game)
-        self.state = "Start"
-        self.startx, self.starty = self.mid_w, self.mid_h + 30
-        self.optionsx, self.optionsy = self.mid_w, self.mid_h +70
-        self.cursor_rect.midtop = (self.startx + self.offset, self.starty)
-    def display_menu(self):
-        self.run_display = True
-        with self.run_display:
-            screen.fill(white)
-            self.draw_text("Main Menu", 20, Width/2, Height/2 - 20)
-            self.draw_text("Starto Gameu", 20, self.startx/2, self.starty/2 - 20)
-            self.draw_text("Options", 20, self.optionsx/2, self.optionsy/2 - 20)
-            self.draw_cursor()
-#Main game function 
-def game():
-    gameOn = True
-    game = Firstgame()
-#Haha no
-    while gameOn:
-        clock.tick(FPS)
-        for event in py.event.get():
-            if event.type == py.QUIT:
-                py.quit()
-                sys.exit()
-            if event.type == py.KEYDOWN:
-                if event.key == py.K_ESCAPE:
-                        gameOn = False
-        screen.fill(white)
-    py.quit()
-def options():
-    gameOn = True
-#Haha no
-    while gameOn:
-        clock.tick(FPS)
-        message_to_screen("Options", black, 24, (Height + 20))
-        message_to_screen("Soon to be added", black, 72, (Height/2))
-        for event in py.event.get():
-            if event.type == py.QUIT:
-                py.quit()
-                sys.exit()
-            if event.type == py.KEYDOWN:
-                if event.key == py.K_ESCAPE:
-                    gameOn = False
-        screen.fill(white)
-        py.display.update()
-    py.quit()
-    
-mainmenu()
+img1 = ImageTk.PhotoImage(Image.open('menu.png'))
+
+Button(w,image=img1,
+       command=toggle_win,
+       border=0,
+       bg='#262626',
+       activebackground='#262626').place(x=5,y=10)
+
+screen.mainloop()
