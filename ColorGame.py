@@ -83,6 +83,39 @@ Button(screen, image=img1,
        activebackground='#262626').place(x=5, y=10)
 timeleft = 30
 
+def missions():
+    def dele():
+        f1.destroy()
+    dele()
+    clearlogo()
+
+    def newl1():
+        L1 = Label(screen, text='Missions', fg='white', bg='#262626')
+        L1.place = (x= 260, y=300)
+
+        L2 = Label(screen, text= 'Todays Missions= \nget some fresh air go take a picture now outside \nEat a meal with veggies', fg= 'white', bg='#262626')
+        L2.place = (x = 300, y= 250)
+
+        L3 = Label(screen, text= 'RELAX')
+        L3.place = (x = 300, y= 250)
+
+        L4 = Label(screen, text= 'FITNESS')
+        L4.place = (x = 300, y= 250)
+
+        L5 = Label(screen, text= 'STUDY')
+        L5.place = (x = 300, y= 250)
+
+        L6 = Label(screen, text= 'DIET')
+        L6.place = (x = 300, y= 250)
+
+        L7 = Label(screen, text= 'RANDOM')
+        L7.place = (x = 300, y= 250)
+
+        L8 = Label(screen, text= 'ART')
+        L8.place = (x = 300, y= 250)
+
+        L9 = Label(screen, text= 'Todays Focal Points earned = 10')
+
 def Cardgame():
     def dele():
         f1.destroy()
