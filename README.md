@@ -7,6 +7,7 @@
 
 # About Us + App description:
 We are first year university students who have a hard time focusing and enjoys procrastination at it's finest. We believe that many of us are struggling through the same problems and thus, we decided to create an online application programmed to help users improve their ability to concentrate through the unique features we provide!
+Currently the app is still in the progress of development and so there are only very few features available
 
 # Features:
 - Competitively trains users' focus through a variety of fun brain games
